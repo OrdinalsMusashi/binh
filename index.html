@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Website of Binh Nguyen Thanh. To edit text, search for the words you want to change and edit them between the tags. Photos are in the images folder. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Binh Nguyen Thanh · Human Potential</title>
+<meta name="description" content="Associate Professor Binh Nguyen Thanh studies how education and frontier technologies augment human potential, enabling people to understand economics, create new types of value and design new markets and institutions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;1,7..72,500&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: a calm, highly legible research narrative. A dark opening band where people and
+   technologies light each other up, then three arenas (markets, institutions, education), a live desk and a record. */
+:root{
+  --paper:#f4f5f7;
+  --surface:#ffffff;
+  --ink:#14203a;
+  --muted:#4f5a6e;
+  --rule:#d5dae2;
+  --accent:#b23a2e;
+  --human:#c9821f;
+  --hero-bg:#0c1526;
+  --hero-ink:#edf0f5;
+  --hero-muted:#a3adc0;
+  --hero-accent:#f2876f;
+  --display:"Literata",Georgia,"Times New Roman",serif;
+  --body:"Atkinson Hyperlegible","Segoe UI",Verdana,Arial,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--paper:#0e1422;--surface:#151d2f;--ink:#e8ebf1;--muted:#a6afc0;--rule:#2a3449;--accent:#f2876f;--human:#f0b363;color-scheme:dark}
+}
+:root[data-theme="dark"]{--paper:#0e1422;--surface:#151d2f;--ink:#e8ebf1;--muted:#a6afc0;--rule:#2a3449;--accent:#f2876f;--human:#f0b363;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+section[id],article[id],footer[id]{scroll-margin-top:62px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.65;font-variant-numeric:tabular-nums}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:3px}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.2;text-wrap:balance;margin:0}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+.label{font-family:var(--body);font-weight:700;font-size:14px;letter-spacing:.02em;color:var(--accent)}
+.placeholder{background:color-mix(in srgb,var(--accent) 14%,transparent);border-bottom:1px dashed var(--accent);padding:0 3px}
+
+/* Header */
+.site-head{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--hero-bg) 94%,transparent);backdrop-filter:blur(8px);color:var(--hero-ink);border-bottom:1px solid #20304d}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:62px}
+.brand{font-family:var(--display);font-size:19px;font-weight:600;text-decoration:none}
+.brand span{color:var(--hero-accent)}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+nav a{text-decoration:none;font-size:15.5px;color:var(--hero-muted)}
+nav a:hover{color:var(--hero-ink)}
+@media (max-width:860px){nav li.opt{display:none} nav ul{gap:14px}}
+.brand{white-space:nowrap}
+@media (max-width:520px){nav li.sm{display:none}.brand{font-size:17px}}
+
+/* Hero */
+.hero{position:relative;background:var(--hero-bg);color:var(--hero-ink);overflow:hidden}
+#heroNet{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero .wrap{position:relative;padding-top:84px;padding-bottom:60px}
+.hero .label{color:var(--hero-accent);margin:0 0 18px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:56px;align-items:center}
+.portrait{margin:0;position:relative}
+.portrait img{display:block;width:100%;height:auto;border-radius:8px;box-shadow:0 0 0 1px #2c3b5c,0 24px 60px rgba(0,0,0,.45)}
+.portrait figcaption{margin-top:14px;font-family:var(--display);font-size:18px;font-weight:600;color:var(--hero-ink);line-height:1.35}
+.portrait figcaption span{font-family:var(--body);font-weight:400;font-size:15px;color:var(--hero-muted)}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr;gap:36px}.portrait{max-width:260px;order:-1}}
+.hero h1{font-size:clamp(42px,6vw,80px);font-weight:600;letter-spacing:-.01em;max-width:12ch;line-height:1.08}
+.hero h1 em{font-style:italic;font-weight:500;color:#f0b363}
+.hero .lede{max-width:56ch;font-size:clamp(18px,1.9vw,21px);color:#d0d6e2;margin:26px 0 0}
+.hero .who{margin-top:30px;display:flex;flex-wrap:wrap;gap:6px 28px;color:var(--hero-muted);font-size:15.5px}
+.hero .who b{color:var(--hero-ink)}
+.legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:24px;color:var(--hero-muted);font-size:14px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px}
+.facts{position:relative;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #20304d;background:#09111f}
+.facts div{padding:20px 24px;border-right:1px solid #20304d}
+.facts div:last-child{border-right:0}
+.facts b{display:block;font-family:var(--display);font-size:32px;font-weight:600;color:var(--hero-ink);line-height:1.15}
+.facts span{font-size:14.5px;color:var(--hero-muted)}
+@media (max-width:760px){.facts{grid-template-columns:1fr 1fr}.facts div:nth-child(2){border-right:0}.facts div:nth-child(-n+2){border-bottom:1px solid #20304d}}
+
+/* Sections */
+section.block{padding:88px 0;border-bottom:1px solid var(--rule)}
+.sec-head{display:grid;grid-template-columns:190px 1fr;gap:16px 48px;margin-bottom:40px}
+.sec-head .label{padding-top:8px}
+.sec-head h2{font-size:clamp(32px,4.2vw,50px)}
+.sec-head p{color:var(--muted);margin:14px 0 0;max-width:62ch}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr}.sec-head .label{padding-top:0}section.block{padding:64px 0}}
+
+/* Thesis */
+.thesis{display:grid;grid-template-columns:190px 1fr;gap:16px 48px}
+.thesis blockquote{margin:0;font-family:var(--display);font-weight:500;font-size:clamp(25px,3.1vw,36px);line-height:1.35;max-width:32ch}
+.thesis blockquote em{color:var(--accent);font-style:italic}
+.thesis p{color:var(--muted);max-width:64ch;margin:22px 0 0}
+.engine{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px;max-width:860px}
+.engine div{border:1px solid var(--rule);background:var(--surface);border-radius:6px;padding:16px 18px}
+.engine b{display:block;font-family:var(--display);font-size:20px;margin-bottom:4px}
+.engine span{font-size:15.5px;color:var(--muted)}
+@media (max-width:760px){.thesis{grid-template-columns:1fr}.engine{grid-template-columns:1fr}}
+
+.flow{list-style:none;margin:34px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:940px;counter-reset:f}
+.flow li{position:relative;background:var(--surface);border:1px solid var(--rule);padding:16px 18px 16px;margin-right:22px;border-radius:6px}
+.flow li::after{content:"→";position:absolute;right:-19px;top:50%;transform:translateY(-50%);color:var(--accent);font-weight:700;font-size:18px}
+.flow li.end{margin-right:0;border-color:var(--accent);background:color-mix(in srgb,var(--accent) 7%,var(--surface))}
+.flow li.end::after{content:none}
+.flow b{display:block;font-family:var(--display);font-size:18px;line-height:1.3;margin-bottom:6px}
+.flow span{font-size:15px;color:var(--muted);line-height:1.5;display:block}
+@media (max-width:860px){.flow{grid-template-columns:1fr}.flow li{margin:0 0 26px}.flow li::after{content:"↓";right:auto;left:22px;top:auto;bottom:-26px;transform:none}.flow li.end{margin:0}}
+/* Arenas */
+.arena{padding:44px 0 8px;border-top:2px solid var(--ink)}
+.arena+.arena{margin-top:48px}
+.arena-head{display:grid;grid-template-columns:190px 1fr;gap:12px 48px;margin-bottom:26px}
+.arena-num{font-family:var(--display);font-size:54px;font-weight:600;line-height:1;color:var(--accent)}
+.arena-head h3{font-size:clamp(26px,3vw,36px);margin-bottom:10px}
+.arena-head p{margin:0;color:var(--muted);max-width:64ch}
+.arena-head .q{margin-top:12px;color:var(--ink);font-family:var(--display);font-style:italic;font-size:19px}
+.papers{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin-left:238px}
+.paper{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:20px 20px 18px;display:flex;flex-direction:column;gap:10px}
+.paper .top{display:flex;justify-content:space-between;gap:10px;font-size:14px;color:var(--muted)}
+.paper .top b{color:var(--ink)}
+.paper h4{margin:0;font-family:var(--display);font-weight:600;font-size:19px;line-height:1.35}
+.paper h4 a{text-decoration:none}
+.paper h4 a:hover{text-decoration:underline;text-decoration-color:var(--accent)}
+.paper p{margin:0;font-size:16px;line-height:1.6}
+.paper .human{font-size:15px;color:var(--muted);border-top:1px dotted var(--rule);padding-top:10px;margin-top:auto}
+.paper .human b{color:var(--human)}
+.paper .journal{font-style:italic;font-size:14.5px;color:var(--muted)}
+.wp{display:inline-block;font-size:12.5px;font-weight:700;padding:2px 8px;border-radius:3px;border:1px solid var(--rule);color:var(--muted);font-style:normal}
+@media (max-width:980px){.arena-head{grid-template-columns:1fr}.papers{margin-left:0}}
+.all-pubs{margin-top:44px;font-size:16px;color:var(--muted)}
+.all-pubs a{color:var(--accent);font-weight:700}
+
+/* Arc */
+.arc{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--ink)}
+.arc div{padding:22px 20px 8px 0;border-right:1px solid var(--rule)}
+.arc div+div{padding-left:20px}
+.arc div:last-child{border-right:0}
+.arc .y{font-weight:700;color:var(--accent);font-size:15px}
+.arc h3{font-size:21px;margin:6px 0 8px}
+.arc p{margin:0;font-size:16px;color:var(--muted)}
+@media (max-width:900px){.arc{grid-template-columns:1fr}.arc div,.arc div+div{padding:18px 0;border-right:0;border-bottom:1px solid var(--rule)}}
+
+/* Live desk */
+.live{background:var(--surface)}
+.desk{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:20px}
+.panel{border:1px solid var(--rule);border-radius:6px;background:var(--paper);padding:20px;display:flex;flex-direction:column;min-width:0}
+.panel-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:4px}
+.panel h3{font-size:22px}
+.status{font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap}
+.status::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--rule);margin-right:6px}
+.status.on::before{background:#2f9e6a;box-shadow:0 0 0 3px color-mix(in srgb,#2f9e6a 25%,transparent)}
+.status.off::before{background:var(--accent)}
+.panel .sub{font-size:15px;color:var(--muted);margin:0 0 14px}
+.big{font-family:var(--display);font-size:36px;font-weight:600;line-height:1.15}
+.big small{font-family:var(--body);font-size:14px;color:var(--muted);display:block;font-weight:400}
+.bars{display:grid;gap:9px;margin-top:14px}
+.bar{display:grid;grid-template-columns:96px 1fr 64px;gap:10px;align-items:center;font-size:14.5px}
+.bar .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .track{height:10px;background:color-mix(in srgb,var(--rule) 70%,transparent);border-radius:2px;overflow:hidden}
+.bar .fill{display:block;height:100%;background:var(--accent);border-radius:2px;transition:width .6s ease}
+.bar .v{text-align:right;font-size:14px}
+.skeleton .fill{background:var(--rule)}
+table.peg{width:100%;border-collapse:collapse;font-size:15px;margin-top:6px}
+table.peg th{font-size:13px;color:var(--muted);font-weight:700;text-align:right;padding:6px 0;border-bottom:1px solid var(--rule)}
+table.peg th:first-child,table.peg td:first-child{text-align:left}
+table.peg td{text-align:right;padding:8px 0;border-bottom:1px dotted var(--rule)}
+.dev{font-size:14px;font-weight:700;padding:2px 6px;border-radius:3px}
+.dev.ok{background:color-mix(in srgb,#2f9e6a 14%,transparent);color:#22744e}
+.dev.warn{background:color-mix(in srgb,var(--human) 18%,transparent);color:#8f560f}
+.dev.bad{background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent)}
+:root[data-theme="dark"] .dev.ok{color:#72d6a5}
+:root[data-theme="dark"] .dev.warn{color:#f0b363}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .dev.ok{color:#72d6a5}:root:not([data-theme="light"]) .dev.warn{color:#f0b363}}
+.spots{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.spots div{border:1px solid var(--rule);background:var(--surface);border-radius:4px;padding:10px 12px}
+.spots span{font-size:13px;font-weight:700;color:var(--muted)}
+.spots b{display:block;font-family:var(--display);font-size:25px;font-weight:600}
+.tv{flex:1;min-height:170px;border:1px dashed var(--rule);border-radius:4px;position:relative}
+.tv .fallback[hidden]{display:none}
+.tv .fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;font-size:14px;color:var(--muted)}
+.connects{margin-top:auto;padding-top:14px;font-size:14.5px;color:var(--muted);border-top:1px dotted var(--rule)}
+.connects a{color:var(--accent);text-decoration:none;font-weight:700}
+.connects a:hover{text-decoration:underline}
+.offnote{font-size:14px;color:var(--muted);margin:10px 0 0}
+.source{font-size:13px;color:var(--muted);margin:8px 0 0}
+@media (max-width:1000px){.desk{grid-template-columns:1fr}}
+.tabs{display:flex;flex-wrap:wrap;gap:4px;border-bottom:2px solid var(--ink);margin-bottom:22px}
+.tab{font:700 16px var(--body);padding:12px 18px;border:1px solid transparent;border-bottom:0;border-radius:6px 6px 0 0;background:transparent;color:var(--muted);cursor:pointer;margin-bottom:-2px}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+.tabpanel[hidden]{display:none}
+.empty{font-size:14.5px;color:var(--muted);margin:10px 0}
+.chart{min-height:190px}
+.chart svg{width:100%;height:auto;display:block}
+.key{display:flex;flex-wrap:wrap;gap:14px;font-size:14px;color:var(--muted);margin-top:6px}
+.key i{display:inline-block;width:14px;height:3px;border-radius:2px;margin-right:6px;vertical-align:4px}
+.key .k1{background:var(--accent)}.key .k2{background:var(--human)}
+.sparks{display:grid;gap:10px;margin-top:4px}
+.spark{display:grid;grid-template-columns:118px 1fr 64px;gap:10px;align-items:center;font-size:14.5px}
+.spark .sl{height:30px}
+.spark svg{width:100%;height:30px;display:block}
+.spark .v{text-align:right;font-weight:700}
+.models{list-style:none;margin:0;padding:0;counter-reset:m;display:grid;gap:8px}
+.models li{counter-increment:m;display:grid;grid-template-columns:22px 1fr auto;gap:8px;align-items:baseline;font-size:14.5px;border-bottom:1px dotted var(--rule);padding-bottom:7px}
+.models li::before{content:counter(m);font-weight:700;color:var(--accent)}
+.models .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.models .nm small{display:block;color:var(--muted);font-size:12.5px}
+.models .v{font-size:13.5px;color:var(--muted);white-space:nowrap}
+.bar.vn .nm{font-weight:700}.bar.vn .fill{background:var(--accent)}
+.wb .bar .fill{background:color-mix(in srgb,var(--muted) 55%,transparent)}
+.wb .bar.vn .fill{background:var(--accent)}
+.wb .bar .v small{display:block;font-size:11.5px;color:var(--muted);font-weight:400}
+
+
+/* Impact */
+.impact{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.impact div{background:var(--paper);padding:24px}
+.impact h3{font-size:22px;margin:6px 0 8px}
+.impact p{margin:0;color:var(--muted);font-size:16px}
+@media (max-width:900px){.impact{grid-template-columns:1fr}}
+.list{list-style:none;margin:36px 0 0;padding:0;border-top:2px solid var(--ink)}
+.list li{display:grid;grid-template-columns:64px 100px 1fr auto;gap:6px 22px;padding:14px 0;border-bottom:1px solid var(--rule);align-items:baseline;font-size:16px}
+.list .y{font-weight:700;color:var(--accent)}
+.list .role{font-size:14px;color:var(--muted)}
+@media (max-width:700px){.list li{grid-template-columns:56px 1fr}.list li>span:nth-child(3),.list li>span:nth-child(4){grid-column:1/-1}}
+
+
+/* Personal */
+.personal-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:start}
+.passions{display:grid;gap:0;border-top:2px solid var(--ink)}
+.passion{display:grid;grid-template-columns:52px 1fr;gap:14px;padding:20px 0;border-bottom:1px solid var(--rule)}
+.passion .pn{font-family:var(--display);font-size:26px;font-weight:600;color:var(--human);line-height:1.2}
+.passion h3{font-size:23px;margin-bottom:6px}
+.passion p{margin:0;color:var(--muted);font-size:16.5px}
+.photos{display:grid;grid-template-columns:1fr;gap:18px}
+.ph{margin:0}
+.ph img{display:block;width:100%;height:auto;border-radius:8px;aspect-ratio:4/3;object-fit:cover}
+.ph figcaption{font-size:14.5px;color:var(--muted);margin-top:8px}
+@media (min-width:1001px){.photos{grid-template-columns:1.15fr 1fr;align-items:start}.ph-b{margin-top:64px}.ph-a img{aspect-ratio:4/5;object-position:45% 50%}.ph-b img{aspect-ratio:4/5}}
+@media (max-width:1000px){.personal-grid{grid-template-columns:1fr}}
+/* Footer */
+footer{background:var(--hero-bg);color:var(--hero-ink);padding:70px 0 44px}
+footer h2{font-size:clamp(30px,4.2vw,48px);margin-bottom:16px}
+footer p{color:#c3cad8;max-width:58ch}
+.links{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 44px}
+.links a{font-size:15px;font-weight:700;text-decoration:none;border:1px solid #2c3b5c;padding:9px 14px;border-radius:4px}
+.links a:hover{border-color:var(--hero-accent);color:var(--hero-accent)}
+.fine{font-size:14px;color:var(--hero-muted);border-top:1px solid #20304d;padding-top:20px}
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#top">Binh Nguyen Thanh<span>.</span></a>
+    <nav aria-label="Primary"><ul>
+      <li><a href="#impact">Impact</a></li>
+      <li><a href="#research">Research</a></li>
+      <li class="sm"><a href="#live">Live desk</a></li>
+      <li class="opt"><a href="#personal">Beyond research</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <canvas id="heroNet" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero-grid">
+    <div>
+    <p class="label">Human potential · Education · Frontier technologies</p>
+    <h1>Elevating the <em>human condition.</em></h1>
+    <p class="lede">I study how human potential is augmented by education and frontier technologies, enabling people to understand the fabric of economics, create new types of value, and design new markets and institutions. Ultimately, my work is about how humanity can proactively elevate the human condition through technology and education.</p>
+    <div class="who">
+      <span><b>Associate Professor of Digital Finance</b>, RMIT University Vietnam</span>
+      <span><b>Associate Head (Research &amp; Innovation)</b>, Economics &amp; Finance</span>
+      <span><b>Co-Lead and Co-Founder</b>, Centre for Business and Emerging Technologies</span>
+    </div>
+    <div class="legend" aria-hidden="true"><span><i style="background:#f0b363"></i>People</span><span><i style="background:#8fb4e8"></i>Technologies</span><span><i style="background:#f2876f"></i>Value created</span></div>
+    </div>
+    <figure class="portrait">
+      <img src="images/portrait.jpg" width="640" height="923" alt="Portrait of Associate Professor Binh Nguyen Thanh">
+      <figcaption>Assoc. Prof. Binh Nguyen Thanh<br><span>Nguyễn Thanh Bình</span></figcaption>
+    </figure>
+    </div>
+  </div>
+  <div class="facts">
+    <div><b>23</b><span>journal articles, including <i>Real Estate Economics</i> and the <i>Journal of Financial Stability</i></span></div>
+    <div><b>3</b><span>book chapters on AI and higher education</span></div>
+    <div><b>2</b><span>policy and industry reports</span></div>
+    <div><b>$119k</b><span>external funding as investigator</span></div>
+  </div>
+</section>
+
+<main>
+<section class="block" id="philosophy">
+  <div class="wrap">
+    <div class="thesis">
+      <span class="label" style="padding-top:8px">Research philosophy</span>
+      <div>
+        <blockquote>Ultimately, it is about how humanity <em>proactively elevates the human condition</em> through technology and education.</blockquote>
+        <p>Technologies do not raise living standards on their own. People do, when education and tools let them see further and act with greater capability. My research follows that process step by step: how education and frontier technologies augment human potential, and how augmented people go on to understand the economy, create value and redesign the markets and institutions they live in.</p>
+        <ol class="flow" aria-label="How the research fits together">
+          <li><b>Education + frontier technologies</b><span>AI, blockchain and digital finance, and the learning that makes them usable</span></li>
+          <li><b>Augmented human potential</b><span>People who can see further, decide better and build more</span></li>
+          <li><b>Understand · Create · Design</b><span>The fabric of economics, new types of value, new markets and institutions</span></li>
+          <li class="end"><b>An elevated human condition</b><span>Growth, shared prosperity and wider opportunity</span></li>
+        </ol>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="block" id="impact">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">Impact</span>
+      <div>
+        <h2>Impact: elevating people and institutions in practice</h2>
+        <p>The same idea guides work beyond publications: equipping regulators, firms and young researchers to use technology and education to raise the human condition.</p>
+      </div>
+    </div>
+    <div class="impact">
+      <div><span class="label">Public policy</span><h3>Vietnam's FinTech sandbox</h3><p>Member of the Reviewing Committee for the FinTech Sandbox at the Vietnamese Ministry of Justice, informing the country's approach to FinTech regulation.</p></div>
+      <div><span class="label">Industry</span><h3>Dragon Capital</h3><p>Advisor of Applied Financial Technology (2022–2023) to Vietnam's largest investment fund, supporting its strategic initiatives in digital assets.</p></div>
+      <div><span class="label">Sustainable growth</span><h3>Climate tech funding</h3><p>Co-author of the <i>Vietnam Climate Tech Funding Ecosystem 2025 Report</i>, mapping how capital reaches climate innovators.</p></div>
+      <div><span class="label">Research capability</span><h3>CBET and the Fintech–Crypto Hub</h3><p>Co-Lead and Co-Founder of the Centre for Business and Emerging Technologies, and co-founder of the RMIT Fintech–Crypto Hub.</p></div>
+      <div><span class="label">Convening</span><h3>International conferences</h3><p>Main organiser of the 17th PRSCO Conference (2021), the RMIT Fintech Blockchain Conference (2022) and the RMIT Vietnam Digital3 Conference (2023).</p></div>
+      <div><span class="label">Recognition</span><h3>Awards</h3><p>Pioneering University in Blockchain Education (Vietnam Blockchain Union, 2022); RMIT Research Excellence Award for Research Impact (team, 2020); RMIT Living Values Award for Impact (2019).</p></div>
+    </div>
+
+    <ul class="list" aria-label="Funded projects">
+      <li><span class="y">2024</span><span>$29,722</span><span>Dragon Capital · The Digital Economy Pathway: Potential Contributions of Digital Technologies</span><span class="role">Chief Investigator</span></li>
+      <li><span class="y">2022</span><span>$60,816</span><span>Ethereum Foundation · Monetary Policy in the Age of Cryptocurrencies</span><span class="role">Chief Investigator</span></li>
+      <li><span class="y">2020</span><span>$5,400</span><span>Regional Science Association International · Nurturing Talent 2020 Workshop</span><span class="role">Grant</span></li>
+      <li><span class="y">2018</span><span>$23,000</span><span>VinaCapital · Vietnamese State-Owned Enterprises Equitisation</span><span class="role">Associate Investigator</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="block" id="research">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">Key research</span>
+      <div>
+        <h2>Three ways people elevate their condition</h2>
+        <p>A selection of key papers, organised by what augmented human potential makes possible. Each summary states what the study found and why it matters.</p>
+      </div>
+    </div>
+
+    <article class="arena" id="design">
+      <div class="arena-head">
+        <span class="arena-num" aria-hidden="true">01</span>
+        <div>
+          <h3>Designing new markets and institutions</h3>
+          <p>Prosperity rests on markets and institutions that let strangers cooperate: money, lending, organisations and the rules that keep them stable. Blockchain lets people redesign these as code, while liquidity, policy and crowd behaviour test whether the designs hold. I study when they hold together, where they break, and how to make them worthy of trust.</p>
+          <p class="q">Can code-based money, lending and organisations earn the trust that traditional institutions took centuries to build?</p>
+        </div>
+      </div>
+      <div class="papers">
+        <div class="paper">
+          <div class="top"><b>2026</b><span class="journal">Journal of Financial Stability</span></div>
+          <h4><a href="https://doi.org/10.1016/j.jfs.2026.101587">Excess liquidity, cryptocurrency returns, and the moderating role of economic policy uncertainty</a></h4>
+          <p>Across ten major cryptocurrencies from 2019 to 2024, periods of U.S. excess liquidity coincide with monthly returns about 12 percentage points higher. Rising policy uncertainty cuts that premium roughly in half, and in China it more than offsets it.</p>
+          <p class="human"><b>Why it matters:</b> regulators can watch stablecoin issuance, leverage and funding conditions to anticipate liquidity-driven speculation.</p>
+        </div>
+        <div class="paper">
+          <div class="top"><b>2025</b><span class="journal">Global Finance Journal</span></div>
+          <h4><a href="https://doi.org/10.1016/j.gfj.2024.101055">The determinants of funding liquidity risk in decentralized lending</a></h4>
+          <p>Examines how liquidity is interconnected across DeFi lending platforms and identifies what drives their funding liquidity risk, the decentralised equivalent of a bank run.</p>
+          <p class="human"><b>Why it matters:</b> points protocol designers to the levers, such as interest-rate design, that keep open lending markets stable.</p>
+        </div>
+        <div class="paper">
+          <div class="top"><b>2023</b><span class="journal">Journal of Industrial and Business Economics</span></div>
+          <h4><a href="https://doi.org/10.1007/s40812-022-00207-3">Are the stabilities of stablecoins connected?</a></h4>
+          <p>Among the five largest stablecoins, instability in USDT and USDC significantly drives instability in the others, with weaker evidence for the reverse.</p>
+          <p class="human"><b>Why it matters:</b> shows users and regulators which coins to watch to protect confidence in digital money.</p>
+        </div>
+        <div class="paper">
+          <div class="top"><b>2026</b><span class="journal">North American Journal of Economics and Finance</span></div>
+          <h4><a href="https://doi.org/10.1016/j.najef.2026.102663">Herding behavior of cryptocurrency during the 2024 U.S. presidential election</a></h4>
+          <p>Examines whether cryptocurrency investors abandoned their own information and followed the crowd around a major political event, building on earlier evidence of herding during the Russia–Ukraine conflict.</p>
+          <p class="human"><b>Why it matters:</b> shows how political events can turn independent investors into a herd, with consequences for market stability.</p>
+        </div>
+        <div class="paper">
+          <div class="top"><b>2026</b><span class="wp">Working paper</span></div>
+          <h4><a href="https://doi.org/10.2139/ssrn.6472398">Why do decentralized autonomous organizations recentralize?</a></h4>
+          <p>Investigates why organisations designed to run without central control drift back toward concentrated decision-making.</p>
+          <p class="human"><b>Why it matters:</b> informs how digital organisations can stay open to broad participation as they grow.</p>
+        </div>
+        <div class="paper">
+          <div class="top"><b>2023</b><span class="journal">Report for the Ethereum Foundation</span></div>
+          <h4><a href="https://doi.org/10.2139/ssrn.4407460">Monetary policy in the age of cryptocurrencies</a></h4>
+          <p>Reviews the history of monetary technologies from commodity to fiat money, assesses the challenges and opportunities of adopting programmatic cryptocurrencies as legal tender, and compares proof-of-work and proof-of-stake issuance.</p>
+          <p class="human"><b>Why it matters:</b> asks how new forms of money would affect growth, inflation and the concentration of wealth.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="arena" id="create">
+      <div class="arena-head">
+        <span class="arena-num" aria-hidden="true">02</span>
+        <div>
+          <h3>Creating new types of value</h3>
+          <p>Frontier technologies and better measurement create forms of value that did not exist before: digitally scarce assets, signals extracted by AI from millions of posts, new measures of uncertainty, and AI agents able to transact. I study where this value comes from and how people can capture it.</p>
+          <p class="q">What new value can people create when machines can read, measure, reason and transact?</p>
+        </div>
+      </div>
+      <div class="papers">
+        <div class="paper">
+          <div class="top"><b>2024</b><span class="journal">International Review of Economics &amp; Finance</span></div>
+          <h4><a href="https://doi.org/10.1016/j.iref.2024.103733">Revisiting the determinants of cryptocurrency excess return: does scarcity matter?</a></h4>
+          <p>Programmed scarcity is a major determinant of excess returns for proof-of-work cryptocurrencies.</p>
+          <p class="human"><b>Why it matters:</b> gives investors an economic basis, rather than hype, for understanding digital-asset value.</p>
+        </div>
+        <div class="paper">
+          <div class="top"><b>2025</b><span class="journal">China Finance Review International</span></div>
+          <h4><a href="https://doi.org/10.1108/cfri-05-2024-0278">Decoding market sentiment: the power of ChatGPT in explaining Bitcoin returns from X data</a></h4>
+          <p>Sentiment indicators built with ChatGPT from Bitcoin-industry posts on X significantly explain Bitcoin returns, even after controlling for established sentiment measures.</p>
+          <p class="human"><b>Why it matters:</b> everyday AI tools can help financial professionals detect signals that earlier indicators missed.</p>
+        </div>
+        <div class="paper">
+          <div class="top"><b>2024</b><span class="journal">Journal of Risk and Financial Management</span></div>
+          <h4><a href="https://doi.org/10.3390/jrfm17020054">Blockchain: the economic and financial institution for autonomous AI?</a></h4>
+          <p>AI agents can research and decide, but cannot act on their decisions because they lack access to contracts, financial services and marketplaces. Viewed as an institutional technology, blockchain can provide digital-native institutions that let them do so.</p>
+          <p class="human"><b>Why it matters:</b> agents that can transact on our behalf could greatly augment human productivity.</p>
+        </div>
+        <div class="paper">
+          <div class="top"><b>2020</b><span class="journal">Real Estate Economics</span></div>
+          <h4><a href="https://doi.org/10.1111/1540-6229.12270">A new measure of real estate uncertainty shocks</a></h4>
+          <p>Constructs an uncertainty measure specific to real estate. It explains about twice as much of the variation in housing prices and starts as a leading macroeconomic uncertainty measure, and it affects prices as well as construction.</p>
+          <p class="human"><b>Why it matters:</b> better measurement of uncertainty helps households, developers and policymakers time major decisions.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="arena" id="education">
+      <div class="arena-head">
+        <span class="arena-num" aria-hidden="true">03</span>
+        <div>
+          <h3>Augmenting potential through education</h3>
+          <p>Human potential is built in classrooms. Generative AI can now answer assignments and even grade them, so universities must rethink what students learn and how learning is assessed. I measure what AI can and cannot do, and design assessment that develops distinctly human strengths.</p>
+          <p class="q">If machines can pass the test, what should education develop in people?</p>
+        </div>
+      </div>
+      <div class="papers">
+        <div class="paper">
+          <div class="top"><b>2023</b><span class="journal">Australasian Journal of Educational Technology</span></div>
+          <h4><a href="https://doi.org/10.14742/ajet.8902">Race with the machines: assessing the capability of generative AI in solving authentic assessments</a></h4>
+          <p>A framework based on Bloom's taxonomy tests ChatGPT-4, ChatGPT-3.5, Bard and Bing on economics assessments. They excel at lower-order tasks but are weakest at creating, building theory-based arguments and referencing.</p>
+          <p class="human"><b>Why it matters:</b> tells educators which higher-order skills to cultivate as AI handles the rest.</p>
+        </div>
+        <div class="paper">
+          <div class="top"><b>2025</b><span class="journal">Journal of Applied Research in Higher Education</span></div>
+          <h4><a href="https://doi.org/10.1108/jarhe-02-2024-0060">Authentic assessment designs and students' self-perception of leadership in business education in Vietnam</a></h4>
+          <p>Team-based authentic assessment strengthens students' sense of their own leadership, especially when combined with extra-curricular activity. Female students report higher leadership confidence, contrary to conventional expectations.</p>
+          <p class="human"><b>Why it matters:</b> assessment design can develop leadership, a skill AI cannot supply.</p>
+        </div>
+        <div class="paper">
+          <div class="top"><b>2024</b><span class="wp">Working paper</span></div>
+          <h4><a href="https://doi.org/10.2139/ssrn.4752229">Evaluating the efficacy of generative artificial intelligence in grading</a></h4>
+          <p>Introduces a framework for testing whether tools such as ChatGPT-4 can grade complex take-home assessments in economics, weighing gains in efficiency and reduced bias against clear limitations.</p>
+          <p class="human"><b>Why it matters:</b> frees educator time for feedback and mentoring while keeping judgement in human hands.</p>
+        </div>
+      </div>
+    </article>
+
+    <p class="all-pubs">This is a selection. The full list of publications is available on <a href="#contact">Google Scholar</a>.</p>
+  </div>
+</section>
+
+
+
+<section class="block live" id="live">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">Live desk</span>
+      <div>
+        <h2>What I study, right now</h2>
+        <p>Live data on financial markets, artificial intelligence and education from public sources, each linked to the research it relates to. Figures refresh automatically while the page is open.</p>
+      </div>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Live desk topics">
+      <button class="tab" role="tab" id="t-markets" aria-controls="p-markets" aria-selected="true" type="button">Financial markets</button>
+      <button class="tab" role="tab" id="t-ai" aria-controls="p-ai" aria-selected="false" tabindex="-1" type="button">Artificial intelligence</button>
+      <button class="tab" role="tab" id="t-edu" aria-controls="p-edu" aria-selected="false" tabindex="-1" type="button">Education &amp; human potential</button>
+    </div>
+    <div class="tabpanel" role="tabpanel" id="p-markets" aria-labelledby="t-markets">
+    <div class="desk">
+      <article class="panel" aria-labelledby="h-defi">
+        <div class="panel-head"><h3 id="h-defi">DeFi lending</h3><span class="status" id="st-defi">Connecting</span></div>
+        <p class="sub">Total value locked in decentralised lending protocols</p>
+        <div class="big" id="defiTotal">–<small>across all lending protocols tracked</small></div>
+        <div class="bars skeleton" id="defiBars">
+          <div class="bar"><span class="nm">Loading</span><span class="track"><span class="fill" style="width:80%"></span></span><span class="v">–</span></div>
+          <div class="bar"><span class="nm">&nbsp;</span><span class="track"><span class="fill" style="width:55%"></span></span><span class="v">–</span></div>
+          <div class="bar"><span class="nm">&nbsp;</span><span class="track"><span class="fill" style="width:38%"></span></span><span class="v">–</span></div>
+          <div class="bar"><span class="nm">&nbsp;</span><span class="track"><span class="fill" style="width:24%"></span></span><span class="v">–</span></div>
+          <div class="bar"><span class="nm">&nbsp;</span><span class="track"><span class="fill" style="width:16%"></span></span><span class="v">–</span></div>
+        </div>
+        <p class="offnote" id="off-defi" hidden>Live data could not be reached from here. It loads on the published website.</p>
+        <p class="source">Source: DefiLlama</p>
+        <div class="connects">Related research: <a href="https://doi.org/10.1016/j.gfj.2024.101055">funding liquidity risk in decentralized lending</a></div>
+      </article>
+
+      <article class="panel" aria-labelledby="h-peg">
+        <div class="panel-head"><h3 id="h-peg">Stablecoin peg monitor</h3><span class="status" id="st-peg">Connecting</span></div>
+        <p class="sub">Price versus the $1.00 peg, in basis points</p>
+        <table class="peg" aria-describedby="h-peg">
+          <thead><tr><th scope="col">Coin</th><th scope="col">Price</th><th scope="col">Deviation</th><th scope="col">Supply</th></tr></thead>
+          <tbody id="pegBody">
+            <tr><td>USDT</td><td>–</td><td>–</td><td>–</td></tr>
+            <tr><td>USDC</td><td>–</td><td>–</td><td>–</td></tr>
+            <tr><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+            <tr><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+            <tr><td>–</td><td>–</td><td>–</td><td>–</td></tr>
+          </tbody>
+        </table>
+        <p class="offnote" id="off-peg" hidden>Live data could not be reached from here. It loads on the published website.</p>
+        <p class="source">Source: DefiLlama stablecoins. Green: within 10 bps; amber: within 50 bps; red: beyond.</p>
+        <div class="connects">Related research: <a href="https://doi.org/10.1007/s40812-022-00207-3">are the stabilities of stablecoins connected?</a></div>
+      </article>
+
+      <article class="panel" aria-labelledby="h-btc">
+        <div class="panel-head"><h3 id="h-btc">Bitcoin &amp; Ether</h3><span class="status" id="st-spot">Connecting</span></div>
+        <p class="sub">Spot price in U.S. dollars, with a one-month chart</p>
+        <div class="spots">
+          <div><span>BTC-USD</span><b id="btc">–</b></div>
+          <div><span>ETH-USD</span><b id="eth">–</b></div>
+        </div>
+        <div class="tv" id="tv"><div class="fallback" id="tvFallback">The interactive TradingView chart appears here on the published website.</div></div>
+        <p class="source">Sources: Coinbase spot prices; chart by TradingView</p>
+        <div class="connects">Related research: <a href="https://doi.org/10.1016/j.jfs.2026.101587">excess liquidity and cryptocurrency returns</a></div>
+      </article>
+    </div>
+    </div>
+
+    <div class="tabpanel" role="tabpanel" id="p-ai" aria-labelledby="t-ai" hidden>
+    <div class="desk">
+      <article class="panel" aria-labelledby="h-res">
+        <div class="panel-head"><h3 id="h-res">AI research momentum</h3><span class="status" id="st-res">Connecting</span></div>
+        <p class="sub">Scholarly works published per year, by topic</p>
+        <div class="chart" id="resChart"><p class="empty">Loading publication counts…</p></div>
+        <div class="key"><span><i class="k1"></i>Generative AI in education</span><span><i class="k2"></i>AI in finance</span></div>
+        <p class="offnote" id="off-res" hidden>Live data could not be reached from here. It loads on the published website.</p>
+        <p class="source">Source: OpenAlex. The current year is partial.</p>
+        <div class="connects">Related research: <a href="https://doi.org/10.14742/ajet.8902">race with the machines</a></div>
+      </article>
+
+      <article class="panel" aria-labelledby="h-att">
+        <div class="panel-head"><h3 id="h-att">Public attention to AI</h3><span class="status" id="st-att">Connecting</span></div>
+        <p class="sub">Daily English Wikipedia page views, last 90 days</p>
+        <div class="sparks" id="attList">
+          <div class="spark"><span class="nm">ChatGPT</span><span class="sl"></span><span class="v">–</span></div>
+          <div class="spark"><span class="nm">Generative AI</span><span class="sl"></span><span class="v">–</span></div>
+          <div class="spark"><span class="nm">Large language model</span><span class="sl"></span><span class="v">–</span></div>
+          <div class="spark"><span class="nm">AI agent</span><span class="sl"></span><span class="v">–</span></div>
+        </div>
+        <p class="offnote" id="off-att" hidden>Live data could not be reached from here. It loads on the published website.</p>
+        <p class="source">Source: Wikimedia. Figure shows the daily average.</p>
+        <div class="connects">Related research: <a href="https://doi.org/10.1016/j.najef.2026.102663">attention, herding and markets</a></div>
+      </article>
+
+      <article class="panel" aria-labelledby="h-hf">
+        <div class="panel-head"><h3 id="h-hf">Trending open AI models</h3><span class="status" id="st-hf">Connecting</span></div>
+        <p class="sub">Models the developer community is adopting this week</p>
+        <ol class="models" id="hfList">
+          <li><span class="nm">Loading…</span><span class="v"></span></li>
+        </ol>
+        <p class="offnote" id="off-hf" hidden>Live data could not be reached from here. It loads on the published website.</p>
+        <p class="source">Source: Hugging Face. Downloads over the last 30 days.</p>
+        <div class="connects">Related research: <a href="https://doi.org/10.3390/jrfm17020054">blockchain for autonomous AI</a></div>
+      </article>
+    </div>
+    </div>
+
+    <div class="tabpanel" role="tabpanel" id="p-edu" aria-labelledby="t-edu" hidden>
+    <div class="desk">
+      <article class="panel" aria-labelledby="h-ter">
+        <div class="panel-head"><h3 id="h-ter">University enrolment</h3><span class="status" id="st-wb1">Connecting</span></div>
+        <p class="sub">Gross tertiary enrolment, % of the relevant age group</p>
+        <div class="bars wb" id="wb1"><p class="empty">Loading…</p></div>
+        <p class="source">Source: World Bank (SE.TER.ENRR), latest year available</p>
+        <div class="connects">Related research: <a href="https://doi.org/10.1108/jarhe-02-2024-0060">authentic assessment and leadership</a></div>
+      </article>
+      <article class="panel" aria-labelledby="h-net">
+        <div class="panel-head"><h3 id="h-net">Digital access</h3><span class="status" id="st-wb2">Connecting</span></div>
+        <p class="sub">Individuals using the internet, % of population</p>
+        <div class="bars wb" id="wb2"><p class="empty">Loading…</p></div>
+        <p class="source">Source: World Bank (IT.NET.USER.ZS), latest year available</p>
+        <div class="connects">Related research: <a href="https://doi.org/10.14742/ajet.8825">AI-assisted learning</a></div>
+      </article>
+      <article class="panel" aria-labelledby="h-acc">
+        <div class="panel-head"><h3 id="h-acc">Financial inclusion</h3><span class="status" id="st-wb3">Connecting</span></div>
+        <p class="sub">Adults (15+) with an account at a financial institution or mobile money provider, %</p>
+        <div class="bars wb" id="wb3"><p class="empty">Loading…</p></div>
+        <p class="source">Source: World Bank Global Findex (FX.OWN.TOTL.ZS), latest year available</p>
+        <div class="connects">Related research: <a href="https://doi.org/10.1016/j.gfj.2024.101055">decentralised lending</a></div>
+      </article>
+    </div>
+    <p class="offnote" id="off-wb" hidden>Live data could not be reached from here. It loads on the published website.</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="block personal" id="personal">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">Beyond research</span>
+      <div>
+        <h2>The personal side of human potential</h2>
+        <p>The same conviction that guides my research guides my life outside it: people grow by cultivating the mind, staying curious and seeing the world first-hand.</p>
+      </div>
+    </div>
+    <div class="personal-grid">
+      <div class="passions">
+        <div class="passion"><span class="pn">01</span><div><h3>Meditation</h3><p>A daily practice of attention and calm. Clarity of mind is the inner foundation of human potential, and it shapes how I think, teach and decide.</p></div></div>
+        <div class="passion"><span class="pn">02</span><div><h3>Exploring</h3><p>Curiosity about places, ideas and people. Exploring keeps me close to how economies and communities actually work on the ground.</p></div></div>
+        <div class="passion"><span class="pn">03</span><div><h3>Learning</h3><p>A lifelong student, moving between German, Vietnamese and English, between economics and new technologies, and always looking for the next question.</p></div></div>
+        <div class="passion"><span class="pn">04</span><div><h3>Travelling</h3><p>Often by motorbike, along coastlines and through mountains. Travel is where reflection and discovery meet.</p></div></div>
+      </div>
+      <div class="photos">
+        <figure class="ph ph-a"><img src="images/mountains.jpg" width="900" height="675" alt="Binh Nguyen Thanh smiling on a terrace overlooking forested mountains" loading="lazy"><figcaption>Exploring in the mountains</figcaption></figure>
+        <figure class="ph ph-b"><img src="images/motorbike.jpg" width="900" height="673" alt="An I love RMIT bag and packed gear on a motorbike seat, with a green headland and the sea behind" loading="lazy"><figcaption>On the road by motorbike, with RMIT along for the ride</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Let's elevate the human condition together.</h2>
+    <p>For research collaboration, PhD supervision, policy advice, industry partnership or media enquiries, please get in touch.</p>
+    <p style="color:var(--hero-ink);margin-top:16px;font-weight:700">binh.nguyenthanh@rmit.edu.vn</p>
+    <div class="links">
+      <a href="#contact"><span class="placeholder">Google Scholar ↗</span></a>
+      <a href="#contact"><span class="placeholder">ORCID ↗</span></a>
+      <a href="#contact"><span class="placeholder">LinkedIn ↗</span></a>
+      <a href="#contact"><span class="placeholder">RMIT profile ↗</span></a>
+    </div>
+    <p class="fine">© 2026 Binh Nguyen Thanh (Nguyễn Thanh Bình). The Business School, RMIT University Vietnam, Ho Chi Minh City. Ph.D. in Economics, University of Regensburg. Live data is provided by DefiLlama, Coinbase and TradingView for information only and is not investment advice.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isDark = () => { const t=document.documentElement.getAttribute('data-theme'); return t ? t==='dark' : matchMedia('(prefers-color-scheme: dark)').matches; };
+
+  /* Hero: people and technologies lighting each other up */
+  const cv=document.getElementById('heroNet'), cx=cv.getContext('2d');
+  let nodes=[], edges=[], pulses=[], W=0, H=0;
+  const seeded = s => () => (s=(s*16807)%2147483647)/2147483647;
+  function build(){
+    const r=cv.getBoundingClientRect(), d=devicePixelRatio||1; W=r.width; H=r.height;
+    cv.width=W*d; cv.height=H*d; cx.setTransform(d,0,0,d,0,0);
+    const rnd=seeded(11), n=Math.round(Math.min(96,W/13)); nodes=[]; edges=[];
+    for(let i=0;i<n;i++){ const human=rnd()<.32; nodes.push({x:W*.36+rnd()*W*.68,y:rnd()*H,human,r:human?2.6+rnd()*1.6:1.1+rnd()*1.4,heat:0}); }
+    for(let i=0;i<n;i++){ const d2=nodes.map((m,j)=>({j,d:(m.x-nodes[i].x)**2+(m.y-nodes[i].y)**2})).sort((a,b)=>a.d-b.d);
+      for(let k=1;k<=2;k++) if(d2[k]&&i<d2[k].j) edges.push([i,d2[k].j]); }
+  }
+  function draw(){
+    cx.clearRect(0,0,W,H);
+    for(const [a,b] of edges){ const h=Math.max(nodes[a].heat,nodes[b].heat);
+      cx.strokeStyle=h>.05?`rgba(242,135,111,${.12+.5*h})`:'rgba(163,173,192,.15)'; cx.lineWidth=1;
+      cx.beginPath(); cx.moveTo(nodes[a].x,nodes[a].y); cx.lineTo(nodes[b].x,nodes[b].y); cx.stroke(); }
+    for(const p of pulses){ const a=nodes[p.a], b=nodes[p.b], t=Math.min(1,p.t);
+      cx.fillStyle='rgba(242,135,111,.9)'; cx.beginPath(); cx.arc(a.x+(b.x-a.x)*t,a.y+(b.y-a.y)*t,1.8,0,7); cx.fill(); }
+    for(const n of nodes){
+      if(n.human){ cx.fillStyle=`rgba(240,179,99,${.55+.45*n.heat})`;
+        if(n.heat>.05){ cx.strokeStyle=`rgba(240,179,99,${.35*n.heat})`; cx.lineWidth=1; cx.beginPath(); cx.arc(n.x,n.y,n.r+5+n.heat*8,0,7); cx.stroke(); } }
+      else cx.fillStyle=n.heat>.05?`rgba(242,135,111,${.4+.6*n.heat})`:'rgba(143,180,232,.6)';
+      cx.beginPath(); cx.arc(n.x,n.y,n.r+n.heat*2,0,7); cx.fill(); }
+    const g=cx.createLinearGradient(0,0,W,0); g.addColorStop(0,'rgba(12,21,38,1)'); g.addColorStop(.5,'rgba(12,21,38,.62)'); g.addColorStop(1,'rgba(12,21,38,0)');
+    cx.fillStyle=g; cx.fillRect(0,0,W,H);
+  }
+  const nbrs = i => edges.flatMap(([a,b]) => a===i?[b]:b===i?[a]:[]);
+  function step(){
+    for(const n of nodes) n.heat*=.968;
+    for(const p of pulses){ p.t+=.03; if(p.t>=1&&!p.done){ p.done=true; const n=nodes[p.b]; n.heat=Math.max(n.heat,p.s);
+      if(p.s>.3) nbrs(p.b).forEach(o=>{ if(o!==p.a&&nodes[o].heat<.2) pulses.push({a:p.b,b:o,t:0,s:p.s*(nodes[o].human?.85:.7)}); }); } }
+    pulses=pulses.filter(p=>!p.done);
+    if(Math.random()<.014&&nodes.length){ const techs=nodes.map((n,i)=>n.human?-1:i).filter(i=>i>=0); const i=techs[Math.floor(Math.random()*techs.length)];
+      nodes[i].heat=1; nbrs(i).forEach(o=>pulses.push({a:i,b:o,t:0,s:.95})); }
+    draw(); requestAnimationFrame(step);
+  }
+  build();
+  if(reduce){ nodes.forEach((n,i)=>{ if(i%7===0) n.heat=.8; }); draw(); } else requestAnimationFrame(step);
+  addEventListener('resize',()=>{ build(); draw(); });
+
+  /* Live market desk */
+  const fmtUSD = v => v>=1e9 ? '$'+(v/1e9).toFixed(v>=1e11?0:1)+'B' : v>=1e6 ? '$'+(v/1e6).toFixed(0)+'M' : '$'+Math.round(v).toLocaleString('en-US');
+  const time = () => new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  function setStatus(id,ok,txt){ const el=document.getElementById(id); el.className='status '+(ok?'on':'off'); el.textContent=ok?(txt||'Live · '+time()):'Offline'; }
+  async function getJSON(url){ const ctl=new AbortController(); const t=setTimeout(()=>ctl.abort(),15000);
+    try{ const r=await fetch(url,{signal:ctl.signal}); if(!r.ok) throw new Error(r.status); return await r.json(); } finally{ clearTimeout(t); } }
+
+  async function loadDefi(){
+    try{
+      const data=await getJSON('https://api.llama.fi/protocols');
+      const lend=data.filter(p=>p.category==='Lending'&&typeof p.tvl==='number'&&p.tvl>0).sort((a,b)=>b.tvl-a.tvl);
+      if(!lend.length) throw new Error('empty');
+      const total=lend.reduce((s,p)=>s+p.tvl,0), top=lend.slice(0,6), max=top[0].tvl;
+      document.getElementById('defiTotal').innerHTML=fmtUSD(total)+'<small>across '+lend.length.toLocaleString('en-US')+' lending protocols tracked</small>';
+      const bars=document.getElementById('defiBars'); bars.classList.remove('skeleton');
+      bars.innerHTML=top.map(p=>`<div class="bar"><span class="nm" title="${esc(p.name)}">${esc(p.name)}</span><span class="track"><span class="fill" style="width:${(p.tvl/max*100).toFixed(1)}%"></span></span><span class="v">${fmtUSD(p.tvl)}</span></div>`).join('');
+      document.getElementById('off-defi').hidden=true; setStatus('st-defi',true);
+    }catch(e){ document.getElementById('off-defi').hidden=false; setStatus('st-defi',false); }
+  }
+  async function loadPeg(){
+    try{
+      const data=await getJSON('https://stablecoins.llama.fi/stablecoins?includePrices=true');
+      const coins=(data.peggedAssets||[]).filter(c=>c.pegType==='peggedUSD'&&typeof c.price==='number'&&c.circulating&&c.circulating.peggedUSD)
+        .sort((a,b)=>b.circulating.peggedUSD-a.circulating.peggedUSD).slice(0,5);
+      if(!coins.length) throw new Error('empty');
+      document.getElementById('pegBody').innerHTML=coins.map(c=>{ const bps=(c.price-1)*1e4, a=Math.abs(bps), cls=a<=10?'ok':a<=50?'warn':'bad';
+        return `<tr><td>${esc(c.symbol)}</td><td>$${c.price.toFixed(4)}</td><td><span class="dev ${cls}">${bps>=0?'+':''}${bps.toFixed(1)}</span></td><td>${fmtUSD(c.circulating.peggedUSD)}</td></tr>`; }).join('');
+      document.getElementById('off-peg').hidden=true; setStatus('st-peg',true);
+    }catch(e){ document.getElementById('off-peg').hidden=false; setStatus('st-peg',false); }
+  }
+  async function loadSpot(){
+    try{
+      const [b,e]=await Promise.all(['BTC','ETH'].map(s=>getJSON(`https://api.coinbase.com/v2/prices/${s}-USD/spot`)));
+      const f=v=>'$'+Number(v).toLocaleString('en-US',{maximumFractionDigits:0});
+      document.getElementById('btc').textContent=f(b.data.amount); document.getElementById('eth').textContent=f(e.data.amount);
+      setStatus('st-spot',true);
+    }catch(err){ setStatus('st-spot',false); }
+  }
+  function loadTradingView(){
+    const box=document.getElementById('tv');
+    const wrap=document.createElement('div'); wrap.className='tradingview-widget-container'; wrap.style.cssText='position:relative;z-index:1;height:100%';
+    wrap.innerHTML='<div class="tradingview-widget-container__widget"></div>';
+    const s=document.createElement('script'); s.async=true; s.src='https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js';
+    s.text=JSON.stringify({symbol:'BITSTAMP:BTCUSD',width:'100%',height:200,locale:'en',dateRange:'1M',colorTheme:isDark()?'dark':'light',isTransparent:true,autosize:false,chartOnly:false});
+    wrap.appendChild(s); box.appendChild(wrap);
+    setTimeout(()=>{ if(box.querySelector('iframe')) document.getElementById('tvFallback').hidden=true; },5000);
+  }
+
+  /* Tabs */
+  const tabs=[...document.querySelectorAll('.tab')], loaded={};
+  function openTab(t){
+    tabs.forEach(x=>{ const on=x===t; x.setAttribute('aria-selected',on); x.tabIndex=on?0:-1; document.getElementById(x.getAttribute('aria-controls')).hidden=!on; });
+    const id=t.id; if(!loaded[id]){ loaded[id]=true; if(id==='t-ai'){ loadResearch(); loadAttention(); loadHF(); } if(id==='t-edu'){ loadWB(); } }
+  }
+  tabs.forEach((t,i)=>{ t.addEventListener('click',()=>openTab(t));
+    t.addEventListener('keydown',e=>{ const k=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0; if(k){ const n=tabs[(i+k+tabs.length)%tabs.length]; n.focus(); openTab(n); } }); });
+  const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const fmtN=v=>v>=1e6?(v/1e6).toFixed(1)+'M':v>=1e3?(v/1e3).toFixed(v>=1e4?0:1)+'k':String(Math.round(v));
+
+  /* AI research momentum: OpenAlex */
+  async function loadResearch(){
+    const now=new Date().getFullYear(), from=2018;
+    const q=t=>`https://api.openalex.org/works?search=${encodeURIComponent(t)}&filter=publication_year:${from}-${now}&group_by=publication_year`;
+    try{
+      const [a,b]=await Promise.all([getJSON(q('generative artificial intelligence education')),getJSON(q('artificial intelligence finance'))]);
+      const toMap=d=>Object.fromEntries((d.group_by||[]).map(g=>[+g.key,g.count]));
+      const A=toMap(a),B=toMap(b), years=[]; for(let y=from;y<=now;y++) years.push(y);
+      const sa=years.map(y=>A[y]||0), sb=years.map(y=>B[y]||0); if(!sa.some(Boolean)&&!sb.some(Boolean)) throw new Error('empty');
+      drawLines(document.getElementById('resChart'),years,[sa,sb],[css('--accent'),css('--human')]);
+      setStatus('st-res',true);
+    }catch(e){ document.getElementById('resChart').innerHTML=''; document.getElementById('off-res').hidden=false; setStatus('st-res',false); }
+  }
+  function drawLines(el,xs,series,colors){
+    const W=360,H=190,l=44,r=12,t=10,b=26, max=Math.max(...series.flat())*1.1||1;
+    const sx=i=>l+i*(W-l-r)/(xs.length-1), sy=v=>t+(H-t-b)*(1-v/max);
+    const ink=css('--muted'), rule=css('--rule');
+    let g=''; const ticks=4; for(let k=0;k<=ticks;k++){ const v=max*k/ticks, y=sy(v); g+=`<line x1="${l}" x2="${W-r}" y1="${y}" y2="${y}" stroke="${rule}" stroke-width="1"/><text x="${l-6}" y="${y+4}" text-anchor="end" font-size="11" fill="${ink}">${fmtN(v)}</text>`; }
+    xs.forEach((x,i)=>{ if(i%2===0||i===xs.length-1) g+=`<text x="${sx(i)}" y="${H-8}" text-anchor="middle" font-size="11" fill="${ink}">${x}</text>`; });
+    series.forEach((sr,j)=>{ const last=sr.length-1;
+      const d=sr.map((v,i)=>(i?'L':'M')+sx(i).toFixed(1)+' '+sy(v).toFixed(1)).join(' ');
+      g+=`<path d="${d}" fill="none" stroke="${colors[j]}" stroke-width="2.5" stroke-linejoin="round"/>`;
+      g+=`<circle cx="${sx(last)}" cy="${sy(sr[last])}" r="3.5" fill="${colors[j]}"/>`; });
+    el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Publications per year, ${xs[0]} to ${xs[xs.length-1]}">${g}</svg>`;
+  }
+
+  /* Public attention: Wikimedia pageviews */
+  const ARTICLES=[['ChatGPT','ChatGPT'],['Generative AI','Generative_artificial_intelligence'],['Large language model','Large_language_model'],['AI agent','Intelligent_agent']];
+  async function loadAttention(){
+    const d=n=>{ const x=new Date(Date.now()-n*864e5); return x.toISOString().slice(0,10).replace(/-/g,''); };
+    const end=d(1), start=d(91);
+    try{
+      const res=await Promise.all(ARTICLES.map(([,a])=>getJSON(`https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/user/${a}/daily/${start}/${end}`).catch(()=>null)));
+      if(!res.some(Boolean)) throw new Error('none');
+      const acc=css('--accent');
+      document.getElementById('attList').innerHTML=ARTICLES.map(([nm],i)=>{
+        const items=res[i]&&res[i].items||[]; if(!items.length) return `<div class="spark"><span class="nm">${nm}</span><span class="sl"></span><span class="v">–</span></div>`;
+        const v=items.map(x=>x.views), mx=Math.max(...v)||1, avg=v.reduce((s,x)=>s+x,0)/v.length;
+        const pts=v.map((y,k)=>`${(k/(v.length-1)*100).toFixed(2)},${(28-y/mx*26).toFixed(2)}`).join(' ');
+        return `<div class="spark"><span class="nm">${nm}</span><span class="sl"><svg viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true"><polyline points="${pts}" fill="none" stroke="${acc}" stroke-width="1.6" vector-effect="non-scaling-stroke"/></svg></span><span class="v">${fmtN(avg)}</span></div>`;
+      }).join('');
+      setStatus('st-att',true);
+    }catch(e){ document.getElementById('off-att').hidden=false; setStatus('st-att',false); }
+  }
+
+  /* Trending open models: Hugging Face */
+  async function loadHF(){
+    try{
+      let data; try{ data=await getJSON('https://huggingface.co/api/models?sort=trendingScore&direction=-1&limit=6'); }catch(e){ data=null; }
+      if(!Array.isArray(data)||!data.length) data=await getJSON('https://huggingface.co/api/models?sort=downloads&direction=-1&limit=6');
+      document.getElementById('hfList').innerHTML=data.slice(0,6).map(m=>{ const [org,name]=String(m.id||m.modelId).split('/');
+        return `<li><span class="nm" title="${esc(m.id||m.modelId)}">${esc(name||org)}<small>${esc(name?org:'')}${m.pipeline_tag?' · '+esc(m.pipeline_tag):''}</small></span><span class="v">${typeof m.downloads==='number'?fmtN(m.downloads)+' downloads':''}</span></li>`; }).join('');
+      setStatus('st-hf',true);
+    }catch(e){ document.getElementById('off-hf').hidden=false; setStatus('st-hf',false); }
+  }
+
+  /* Education & human potential: World Bank */
+  const PEERS='VNM;THA;IDN;PHL;MYS;CHN', NAMES={VNM:'Vietnam',THA:'Thailand',IDN:'Indonesia',PHL:'Philippines',MYS:'Malaysia',CHN:'China'};
+  async function loadWB(){
+    const inds=[['SE.TER.ENRR','wb1','st-wb1'],['IT.NET.USER.ZS','wb2','st-wb2'],['FX.OWN.TOTL.ZS','wb3','st-wb3']]; let anyOk=false;
+    await Promise.all(inds.map(async([ind,el,st])=>{
+      try{
+        const d=await getJSON(`https://api.worldbank.org/v2/country/${PEERS}/indicator/${ind}?format=json&mrnev=1&per_page=50`);
+        const rows=(d[1]||[]).filter(r=>r.value!=null).map(r=>({c:r.countryiso3code,v:r.value,y:r.date})).sort((a,b)=>b.v-a.v);
+        if(!rows.length) throw new Error('empty');
+        document.getElementById(el).innerHTML=rows.map(r=>`<div class="bar${r.c==='VNM'?' vn':''}"><span class="nm">${NAMES[r.c]||r.c}</span><span class="track"><span class="fill" style="width:${Math.min(100,r.v).toFixed(1)}%"></span></span><span class="v">${r.v.toFixed(0)}%<small>${r.y}</small></span></div>`).join('');
+        setStatus(st,true,'Latest data'); anyOk=true;
+      }catch(e){ document.getElementById(el).innerHTML=''; setStatus(st,false); }
+    }));
+    if(!anyOk) document.getElementById('off-wb').hidden=false;
+  }
+  loadDefi(); loadPeg(); loadSpot(); loadTradingView();
+  setInterval(loadSpot,60000); setInterval(()=>{ loadDefi(); loadPeg(); },600000);
+})();
+</script>
+</body>
+</html>
